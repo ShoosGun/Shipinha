@@ -10,4 +10,4 @@ You have full controll on the rotations, but for translation you only have two o
 
 To change the thruster power use the "go up" and "go down" inputs to increase or decrease it. 
 
-And to turn the thruster on use the "go foward" input, be aware that in work in a binary fashion, so if you are using the controller a gentle push on the stick will make it go at full speed.
+And to turn the thruster on use the "go foward" input, be aware that it works in a binary fashion, so if you are using the controller a gentle push on the stick will make it go at full speed.
