@@ -1,0 +1,48 @@
+ManifestFileVersion: 0
+CRC: 3931634214
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 16fdc6a79bdce854c1642aa3ebbc86f5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: fc02bf6dedc4609611fd4aebc9b9806d
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/ShipSpawner/ShipSpawner.prefab
+- Assets/ShipSpawner/ShipSpawnerV2.prefab
+Dependencies: []

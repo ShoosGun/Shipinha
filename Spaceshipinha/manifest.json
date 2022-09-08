@@ -1,0 +1,9 @@
+{
+  "filename": "Spaceshipinha.dll",
+  "author": "Locochoco",
+  "name": "Spaceshipinha",
+  "uniqueName": "Locochoco.Spaceshipinha",
+  "version": "0.1.0",
+  "owmlVersion": "2.0.0",
+  "dependencies": [ "Locochoco.SlateShipyard" ]
+}
