@@ -1,4 +1,6 @@
-# Shipinha
+# Spaceshipinha
+
+# ![Spaceshipinha](pictures/shipinha.png)
 
 Adds a custom ship simmilar to the one in the Outer Wilds Alpha mod [Navinha](https://github.com/ShoosGun/Navinha).
 
