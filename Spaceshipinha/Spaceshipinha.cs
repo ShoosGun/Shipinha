@@ -20,6 +20,9 @@ namespace Spaceshipinha
             modHelper = ModHelper;
             gameObject.AddComponent<NaveSpawn>();
         }
-
+        public override void Configure(IModConfig config)
+        {
+            NaveThrusterController.ControllerDeadZone = config.GetSettingsValue<float>("controllerDeadZone");
+        }
     }
 }

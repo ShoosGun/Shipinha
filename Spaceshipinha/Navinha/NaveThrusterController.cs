@@ -4,6 +4,7 @@ namespace Spaceshipinha.Navinha
 {
     internal class NaveThrusterController : ThrusterController
     {
+        public static float ControllerDeadZone = 0.1f;
         public int Potencia { get; private set; } = 0; //Em "por mil"
         public NaveFlightConsole naveFlightConsole;
 
@@ -25,7 +26,7 @@ namespace Spaceshipinha.Navinha
         }
         public override void Update()
         {
-            Potencia += (int)((OWInput.GetValue(InputLibrary.thrustUp, InputMode.All) - OWInput.GetValue(InputLibrary.thrustDown, InputMode.All)) * 10);
+            Potencia += (int)(OWInput.GetValue(InputLibrary.thrustZ, InputMode.All) * 10);
             Potencia = Mathf.Clamp(Potencia, 0, 1000);
 
 
@@ -42,7 +43,7 @@ namespace Spaceshipinha.Navinha
         }
         public bool IsThrusterOn()
         {
-            return OWInput.GetValue(InputLibrary.thrustZ, InputMode.All) > 0.1f;
+            return OWInput.GetValue(InputLibrary.thrustUp, InputMode.All) > ControllerDeadZone;
         }
         public override Vector3 ReadTranslationalInput()
         {
