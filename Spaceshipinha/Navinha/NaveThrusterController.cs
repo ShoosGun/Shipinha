@@ -26,7 +26,14 @@ namespace Spaceshipinha.Navinha
         }
         public override void Update()
         {
-            Potencia += (int)(OWInput.GetValue(InputLibrary.thrustZ, InputMode.All) * 10);
+            float potenciaInput;
+            if (Spaceshipinha.ControllerInputs){
+                potenciaInput = OWInput.GetValue(InputLibrary.thrustZ, InputMode.All);
+            }
+            else{
+                potenciaInput = OWInput.GetValue(InputLibrary.thrustUp, InputMode.All) - OWInput.GetValue(InputLibrary.thrustDown, InputMode.All);
+            }
+            Potencia += (int)(potenciaInput * 10f);
             Potencia = Mathf.Clamp(Potencia, 0, 1000);
 
 
@@ -43,7 +50,14 @@ namespace Spaceshipinha.Navinha
         }
         public bool IsThrusterOn()
         {
-            return OWInput.GetValue(InputLibrary.thrustUp, InputMode.All) > ControllerDeadZone;
+            float input;
+            if (Spaceshipinha.ControllerInputs){
+                input = OWInput.GetValue(InputLibrary.thrustUp, InputMode.All);
+            }
+            else{
+                input = OWInput.GetValue(InputLibrary.thrustZ, InputMode.All);
+            }
+            return input > ControllerDeadZone;
         }
         public override Vector3 ReadTranslationalInput()
         {

@@ -7,6 +7,13 @@
 			"min": 0,
 			"max": 1,
 			"title": "Thrust foward Controller Dead Zone"
+		},
+		"controllerInputs": {
+			"type": "toggle",
+			"value": false,
+			"yes": "Yes",
+			"no": "No",
+			"title": "Change to controller inputs?"
 		}
 	}
 }

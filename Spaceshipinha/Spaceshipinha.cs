@@ -10,6 +10,8 @@ namespace Spaceshipinha
         public static GameObject navinhaPrefab;
         public static AudioClip navinhaThrusterAudio;
         public static IModHelper modHelper;
+
+        public static bool ControllerInputs = false;
         private void Start()
         {
             AssetBundle bundle = ModHelper.Assets.LoadBundle("AssetBundles/navinha");
@@ -23,6 +25,7 @@ namespace Spaceshipinha
         public override void Configure(IModConfig config)
         {
             NaveThrusterController.ControllerDeadZone = config.GetSettingsValue<float>("controllerDeadZone");
+            ControllerInputs = config.GetSettingsValue<bool>("controllerInputs");
         }
     }
 }

@@ -17,10 +17,16 @@ namespace Spaceshipinha.Navinha
         private PlayerAudioController playerAudio;
 
         private ScreenPrompt promptDeAtivar;
-
         private ScreenPrompt promptDeReduzirPotencia;
-
         private ScreenPrompt promptDeAumentarPotencia;
+
+
+        private ScreenPrompt promptDeAtivarKB;
+        private ScreenPrompt promptDeReduzirPotenciaKB;
+        private ScreenPrompt promptDeAumentarPotenciaKB;
+
+        private ScreenPrompt promptDeAtivarControle;
+        private ScreenPrompt promptDeMudarPotenciaControle;
 
         public ScreenPrompt valorDaPotencia;
         public NaveThrusterController naveThrusterController;
@@ -28,6 +34,7 @@ namespace Spaceshipinha.Navinha
         private string TurnOnPrompt = "Turn On";
         private string LowerPowerPrompt = "Lower Power";
         private string IncreasePowerPrompt = "Increase Power";
+        private string ChangePowerPrompt = "Change Power";
         private string PowerPrompt = "Power: ";
 
         public event Action OnEnterNaveFlightConsole;
@@ -36,9 +43,14 @@ namespace Spaceshipinha.Navinha
         private void Awake()
         {
             enabled = false;
-            promptDeAtivar = new ScreenPrompt(InputLibrary.thrustZ, TurnOnPrompt, 1);
-            promptDeReduzirPotencia = new ScreenPrompt(InputLibrary.thrustDown, LowerPowerPrompt, 1);
-            promptDeAumentarPotencia = new ScreenPrompt(InputLibrary.thrustUp, IncreasePowerPrompt, 1);
+
+            promptDeAtivarKB = new ScreenPrompt(InputLibrary.thrustZ, TurnOnPrompt, 1);
+            promptDeReduzirPotenciaKB = new ScreenPrompt(InputLibrary.thrustDown, LowerPowerPrompt, 1);
+            promptDeAumentarPotenciaKB = new ScreenPrompt(InputLibrary.thrustUp, IncreasePowerPrompt, 1);
+
+            promptDeAtivarControle = new ScreenPrompt(InputLibrary.thrustUp, TurnOnPrompt, 1);
+            promptDeMudarPotenciaControle = new ScreenPrompt(InputLibrary.thrustZ, ChangePowerPrompt, 1);
+
             valorDaPotencia = new ScreenPrompt(PowerPrompt, 1);
 
             attachPoint = this.GetRequiredComponent<PlayerAttachPoint>();
@@ -53,6 +65,12 @@ namespace Spaceshipinha.Navinha
             interactVolume.OnPressInteract -= OnPressInteract;
         }
 
+        private void ChoosePromptType() 
+        {
+            promptDeAtivar = Spaceshipinha.ControllerInputs ? promptDeAtivarControle : promptDeAtivarKB;
+            promptDeReduzirPotencia = Spaceshipinha.ControllerInputs ? promptDeMudarPotenciaControle : promptDeReduzirPotenciaKB;
+            promptDeAumentarPotencia = Spaceshipinha.ControllerInputs ? null : promptDeAumentarPotenciaKB;
+        }
         private void OnPressInteract()
         {
             if (!enabled)
@@ -62,9 +80,13 @@ namespace Spaceshipinha.Navinha
                 interactVolume.DisableInteraction();
                 enabled = true;
                 OnEnterNaveFlightConsole?.Invoke();
+
+                ChoosePromptType();
                 Locator.GetPromptManager().AddScreenPrompt(promptDeAtivar, PromptPosition.LowerLeft, true);
                 Locator.GetPromptManager().AddScreenPrompt(promptDeReduzirPotencia, PromptPosition.LowerLeft, true);
-                Locator.GetPromptManager().AddScreenPrompt(promptDeAumentarPotencia, PromptPosition.LowerLeft, true);
+                if (promptDeAumentarPotencia != null){
+                    Locator.GetPromptManager().AddScreenPrompt(promptDeAumentarPotencia, PromptPosition.LowerLeft, true);
+                }
                 Locator.GetPromptManager().AddScreenPrompt(valorDaPotencia, PromptPosition.BottomCenter, true);
             }
         }
@@ -79,9 +101,14 @@ namespace Spaceshipinha.Navinha
                 interactVolume.ResetInteraction();
                 enabled = false;
                 OnExitNaveFlightConsole?.Invoke();
+
                 Locator.GetPromptManager().RemoveScreenPrompt(promptDeAtivar);
                 Locator.GetPromptManager().RemoveScreenPrompt(promptDeReduzirPotencia);
-                Locator.GetPromptManager().RemoveScreenPrompt(promptDeAumentarPotencia);
+                if (promptDeAumentarPotencia != null)
+                {
+                    Locator.GetPromptManager().RemoveScreenPrompt(promptDeAumentarPotencia);
+                }
+
                 Locator.GetPromptManager().RemoveScreenPrompt(valorDaPotencia);
             }
             if (naveThrusterController != null)
