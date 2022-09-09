@@ -59,6 +59,7 @@ namespace Spaceshipinha.Navinha
             {
                 playerAudio.PlayOneShotInternal(AudioType.ShipCockpitBuckleUp);
                 attachPoint.AttachPlayer();
+                interactVolume.DisableInteraction();
                 enabled = true;
                 OnEnterNaveFlightConsole?.Invoke();
                 Locator.GetPromptManager().AddScreenPrompt(promptDeAtivar, PromptPosition.LowerLeft, true);
@@ -74,6 +75,7 @@ namespace Spaceshipinha.Navinha
             {
                 attachPoint.DetachPlayer();
                 playerAudio.PlayOneShotInternal(AudioType.ShipCockpitUnbuckle);
+                interactVolume.EnableInteraction();
                 interactVolume.ResetInteraction();
                 enabled = false;
                 OnExitNaveFlightConsole?.Invoke();

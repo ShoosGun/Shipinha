@@ -100,6 +100,18 @@ namespace Spaceshipinha.Navinha
 
             #endregion
 
+            #region Nave_Particles
+            Transform flames = naveBody.transform.GetChild(5);
+            ParticleSystem fire = flames.GetChild(0).GetComponent<ParticleSystem>();
+            Light light = flames.GetChild(1).GetComponent<Light>();
+
+            NaveThrusterFlameController flameController = flames.gameObject.AddComponent<NaveThrusterFlameController>();
+            flameController.naveFlightConsole = naveFlightConsole;
+            flameController.naveThrusterController = naveThrusterController;
+            flameController.light = light;
+            flameController.particles = fire;
+            #endregion
+
             return naveBody;
         }
     }

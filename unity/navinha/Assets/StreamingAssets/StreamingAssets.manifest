@@ -1,10 +1,7 @@
 ManifestFileVersion: 0
-CRC: 2919497165
+CRC: 2866507604
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: navinha
-      Dependencies: {}
-    Info_1:
-      Name: shipspawner
       Dependencies: {}
