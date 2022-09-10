@@ -44,6 +44,19 @@ namespace Spaceshipinha.Navinha
             whiteHoleVolume.SpawnImmediately(naveBody, entryData);
             return false;
         }
+        public override void OnWhiteHoleSpawnImmediately(WhiteHoleVolume whiteHoleVolume, RelativeLocationData entryData, out bool playerPassedThroughWarp)
+        {
+            playerPassedThroughWarp = false;
+            if (Time.time > whiteHoleVolume._lastShipWarpTime + Time.deltaTime)
+            {
+                whiteHoleVolume._lastShipWarpTime = Time.time;
+                if (naveConsole.enabled)
+                {
+                    playerPassedThroughWarp = true;
+                    whiteHoleVolume.MakeRoomForBody(naveBody);
+                }
+            }
+        }
         public override bool OnTimeLoopBlackHoleVanish(TimeLoopBlackHoleVolume timeloopBlackHoleVolume)
         {
             if (naveConsole.enabled)
