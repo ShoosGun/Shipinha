@@ -3,7 +3,7 @@
   "author": "Locochoco",
   "name": "Spaceshipinha",
   "uniqueName": "Locochoco.Spaceshipinha",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "owmlVersion": "2.0.0",
   "dependencies": [ "Locochoco.SlateShipyard" ]
 }

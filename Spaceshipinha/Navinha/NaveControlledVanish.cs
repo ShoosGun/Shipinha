@@ -12,6 +12,10 @@ namespace Spaceshipinha.Navinha
             DestroyComponentsOnGrow = false;
             VanishVolumesPatches.OnConditionsForPlayerToWarp += Patches_OnConditionsForPlayerToWarp;
         }
+        public void OnDestroy()
+        {
+            VanishVolumesPatches.OnConditionsForPlayerToWarp -= Patches_OnConditionsForPlayerToWarp;
+        }
         public void Start()
         {
             naveBody = gameObject.GetAttachedOWRigidbody();
