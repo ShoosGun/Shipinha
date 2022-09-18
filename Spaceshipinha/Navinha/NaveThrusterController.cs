@@ -69,6 +69,9 @@ namespace Spaceshipinha.Navinha
 
         public override Vector3 ReadRotationalInput()
         {
+            if (OWInput.IsPressed(InputLibrary.freeLook, InputMode.All))
+                return Vector3.zero;
+
             //Rodar na horizontal eh 8x menos efetivo que rolar (1.25f de aceleracao)
             float pitchInput = -OWInput.GetValue(InputLibrary.pitch, InputMode.All);
             float roolAndYawInput = -OWInput.GetValue(InputLibrary.yaw, InputMode.All);

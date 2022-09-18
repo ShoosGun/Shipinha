@@ -1,4 +1,5 @@
 ﻿using SlateShipyard.ShipSpawner;
+using SlateShipyard.PlayerAttaching;
 
 using UnityEngine;
 
@@ -33,15 +34,21 @@ namespace Spaceshipinha.Navinha
             //naveSeat.layer = LayerMask.NameToLayer("BasicEffectVolume");
             naveSeat.AddComponent<InteractZone>().ChangePrompt(seatOnPrompt);
 
-            PlayerAttachPoint attachPoint = naveSeat.AddComponent<PlayerAttachPoint>();
+            FreeLookablePlayerAttachPoint attachPoint = naveSeat.AddComponent<FreeLookablePlayerAttachPoint>(); 
             attachPoint._lockPlayerTurning = true;
             attachPoint._centerCamera = true;
+
             NaveFlightConsole naveFlightConsole = naveSeat.AddComponent<NaveFlightConsole>();
             naveFlightConsole.naveBody = naveBodyRigid;
             naveFlightConsole.naveThrusterController = naveThrusterController;
-
+            
             naveThrusterController.naveFlightConsole = naveFlightConsole;
             naveBodyRigid.naveFlightConsole = naveFlightConsole;
+            attachPoint.AllowFreeLook = () =>
+            {
+                return naveFlightConsole.enabled;
+            };
+
             naveThrusterController.Innit();
             naveBodyRigid.Innit();
             #endregion

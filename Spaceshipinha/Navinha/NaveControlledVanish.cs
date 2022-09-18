@@ -10,11 +10,11 @@ namespace Spaceshipinha.Navinha
         public void Awake()
         {
             DestroyComponentsOnGrow = false;
-            VanishVolumesPatches.OnConditionsForPlayerToWarp += Patches_OnConditionsForPlayerToWarp;
+            VanishVolumesPatches.OnConditionsForPlayerToWarp += OnConditionsForPlayerToWarp;
         }
         public void OnDestroy()
         {
-            VanishVolumesPatches.OnConditionsForPlayerToWarp -= Patches_OnConditionsForPlayerToWarp;
+            VanishVolumesPatches.OnConditionsForPlayerToWarp -= OnConditionsForPlayerToWarp;
         }
         public void Start()
         {
@@ -66,7 +66,7 @@ namespace Spaceshipinha.Navinha
             }
             return true;
         }
-        private bool Patches_OnConditionsForPlayerToWarp()
+        private bool OnConditionsForPlayerToWarp()
         {
             if (naveConsole != null) {
                 return !naveConsole.enabled; 
