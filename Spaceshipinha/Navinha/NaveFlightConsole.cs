@@ -91,9 +91,9 @@ namespace Spaceshipinha.Navinha
                 manager.AddScreenPrompt(promptDeAtivar, PromptPosition.LowerLeft, true);
                 manager.AddScreenPrompt(promptDeReduzirPotencia, PromptPosition.LowerLeft, true);
                 if (promptDeAumentarPotencia != null){
-                    manager.AddScreenPrompt(promptDeAumentarPotencia, PromptPosition.UpperRight, true);
+                    manager.AddScreenPrompt(promptDeAumentarPotencia, PromptPosition.LowerLeft, true);
                 }
-                manager.AddScreenPrompt(promptDeFreelook, PromptPosition.LowerLeft, true);
+                manager.AddScreenPrompt(promptDeFreelook, PromptPosition.UpperRight, true);
                 manager.AddScreenPrompt(valorDaPotencia, PromptPosition.BottomCenter, true);
             }
         }
