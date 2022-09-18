@@ -46,7 +46,7 @@ namespace Spaceshipinha.Navinha
         {
             enabled = false;
 
-            promptDeFreelook = new ScreenPrompt(InputLibrary.freeLook, "FreeLookPrompt", 1);
+            promptDeFreelook = new ScreenPrompt(InputLibrary.freeLook, FreeLookPrompt, 1);
 
             promptDeAtivarKB = new ScreenPrompt(InputLibrary.thrustZ, TurnOnPrompt, 1);
             promptDeReduzirPotenciaKB = new ScreenPrompt(InputLibrary.thrustDown, LowerPowerPrompt, 1);
@@ -91,7 +91,7 @@ namespace Spaceshipinha.Navinha
                 manager.AddScreenPrompt(promptDeAtivar, PromptPosition.LowerLeft, true);
                 manager.AddScreenPrompt(promptDeReduzirPotencia, PromptPosition.LowerLeft, true);
                 if (promptDeAumentarPotencia != null){
-                    manager.AddScreenPrompt(promptDeAumentarPotencia, PromptPosition.LowerLeft, true);
+                    manager.AddScreenPrompt(promptDeAumentarPotencia, PromptPosition.UpperRight, true);
                 }
                 manager.AddScreenPrompt(promptDeFreelook, PromptPosition.LowerLeft, true);
                 manager.AddScreenPrompt(valorDaPotencia, PromptPosition.BottomCenter, true);
