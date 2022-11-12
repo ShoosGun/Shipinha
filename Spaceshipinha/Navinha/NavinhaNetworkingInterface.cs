@@ -18,30 +18,30 @@ namespace Spaceshipinha.Navinha
         }
         public override void OnIsPuppetChange(bool isPuppet)
         {
-            naveThrusterFlameController.IsPuppet(IsPuppet);
+            naveThrusterFlameController.IsPuppet(isPuppet);
             base.OnIsPuppetChange(isPuppet);
         }
-        public void Start()
-        {
+        //public void Start()
+        //{
 
-            if (IsPuppet)
-            {
-                for (int i = 0; i < scriptsToDisableWhenPuppet.Length; i++)
-                {
-                    scriptsToDisableWhenPuppet[i].enabled = false;
-                }
-                for (int i = 0; i < gameObjectsToDisableWhenPuppet.Length; i++)
-                {
-                    gameObjectsToDisableWhenPuppet[i].SetActive(false);
-                }
+        //    if (IsPuppet)
+        //    {
+        //        for (int i = 0; i < scriptsToDisableWhenPuppet.Length; i++)
+        //        {
+        //            scriptsToDisableWhenPuppet[i].enabled = false;
+        //        }
+        //        for (int i = 0; i < gameObjectsToDisableWhenPuppet.Length; i++)
+        //        {
+        //            gameObjectsToDisableWhenPuppet[i].SetActive(false);
+        //        }
 
-                Rigidbody r = GetComponent<Rigidbody>();
-                if (r != null)
-                {
-                    r.isKinematic = RigidbodyToKinematicWhenPuppet;
-                }
-            }
-        }
+        //        Rigidbody r = GetComponent<Rigidbody>();
+        //        if (r != null)
+        //        {
+        //            r.isKinematic = RigidbodyToKinematicWhenPuppet;
+        //        }
+        //    }
+        //}
     }
     /*
     public class NavinhaNetworkingInterface : SimpleNetworkingInterface

@@ -40,8 +40,8 @@ namespace Spaceshipinha.Navinha
 		{
 			this.isPuppet = isPuppet;
 
-			rpsController.enabled = true;
-			enabled = true;
+			rpsController.enabled = isPuppet;
+			enabled = isPuppet;
 		}
 		private float GetTranslationInput() 
 		{
