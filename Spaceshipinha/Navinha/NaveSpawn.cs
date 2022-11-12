@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Spaceshipinha.Navinha
 {
-    internal class NaveSpawn : MonoBehaviour
+    public class NaveSpawn : MonoBehaviour
     {
         private string seatOnPrompt = "Seat On";
 
@@ -18,10 +18,10 @@ namespace Spaceshipinha.Navinha
             GameObject naveBody = Instantiate(Spaceshipinha.navinhaPrefab);
 
             NaveBody naveBodyRigid = naveBody.AddComponent<NaveBody>();
-            naveBody.AddComponent<NaveThrusterModel>();
+            NaveThrusterModel naveThrusterModel = naveBody.AddComponent<NaveThrusterModel>();
             NaveThrusterController naveThrusterController = naveBody.AddComponent<NaveThrusterController>();
-            naveBody.AddComponent<NaveControlledVanish>();
-            naveBody.AddComponent<ImpactSensor>();
+            NaveControlledVanish naveControlledVanish =  naveBody.AddComponent<NaveControlledVanish>();
+            ImpactSensor impactSensor = naveBody.AddComponent<ImpactSensor>();
 
             AstroObject astroObject = naveBody.AddComponent<AstroObject>();
             astroObject._customName = transform.name;
@@ -117,6 +117,33 @@ namespace Spaceshipinha.Navinha
             flameController.naveThrusterController = naveThrusterController;
             flameController.light = light;
             flameController.particles = fire;
+            #endregion
+
+            #region Nave_Networking_Interface
+            NavinhaNetworkingInterface networkingInterface = naveBody.AddComponent<NavinhaNetworkingInterface>();
+
+            networkingInterface.scriptsToDisableWhenPuppet = new MonoBehaviour[]
+            {
+                naveBodyRigid,
+                naveThrusterModel,
+                naveThrusterController,
+                naveControlledVanish,
+                impactSensor,
+                astroObject
+            };
+            networkingInterface.gameObjectsToDisableWhenPuppet = new GameObject[]
+            {
+                naveSeat,
+                naveDetector,
+                naveRFVolume,
+                naveBody.transform.GetChild(0).gameObject,
+                naveBody.transform.GetChild(2).GetChild(0).GetChild(1).gameObject,
+                naveBody.transform.GetChild(2).GetChild(1).GetChild(0).gameObject
+            };
+            networkingInterface.RigidbodyToKinematicWhenPuppet = true;
+
+            networkingInterface.naveThrusterFlameController = flameController;
+            networkingInterface.naveThrusterController = naveThrusterController;
             #endregion
 
             return naveBody;

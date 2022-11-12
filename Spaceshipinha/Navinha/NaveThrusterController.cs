@@ -2,7 +2,7 @@
 
 namespace Spaceshipinha.Navinha
 {
-    internal class NaveThrusterController : ThrusterController
+    public class NaveThrusterController : ThrusterController
     {
         public static float ControllerDeadZone = 0.1f;
         public int Potencia { get; private set; } = 0; //Em "por mil"

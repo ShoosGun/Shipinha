@@ -2,7 +2,7 @@
 
 namespace Spaceshipinha.Navinha
 {
-    internal class NaveBody : OWRigidbody
+    public class NaveBody : OWRigidbody
     {
         private bool _isPlayerAtFlightConsole;
         public NaveFlightConsole naveFlightConsole;

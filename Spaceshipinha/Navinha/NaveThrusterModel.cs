@@ -2,7 +2,7 @@
 
 namespace Spaceshipinha.Navinha
 {
-    internal class NaveThrusterModel : ThrusterModel
+    public class NaveThrusterModel : ThrusterModel
     {
         public override void Awake()
         {
