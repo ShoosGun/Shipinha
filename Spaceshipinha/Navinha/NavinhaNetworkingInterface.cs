@@ -3,42 +3,19 @@ using UnityEngine;
 
 namespace Spaceshipinha.Navinha
 {
-    public class NavinhaNetworkingInterface : ObjectNetworkingInterface
+    public class NavinhaNetworkingInterface : SimpleNetworkingInterface
     {
-        bool isPuppet = false;
-        public override bool IsPuppet { get => isPuppet; set => isPuppet = value; }
-
-        public GameObject[] gameObjectsToDisableWhenPuppet;
-        public MonoBehaviour[] scriptsToDisableWhenPuppet;
-        public bool RigidbodyToKinematicWhenPuppet = true;
-
         public NaveThrusterFlameController naveThrusterFlameController;
         public NaveThrusterController naveThrusterController;
 
         [SyncableProperty]
         public float translationalInputz { get => naveThrusterController.ReadTranslationalInput().z; 
             set => naveThrusterFlameController.externalTranslationInput = value; }
-        public void Start()
+
+        public override void OnIsPuppetChange(bool isPuppet)
         {
-            naveThrusterFlameController.IsPuppet(IsPuppet);
-
-            if (IsPuppet)
-            {
-                for (int i = 0; i < scriptsToDisableWhenPuppet.Length; i++)
-                {
-                    scriptsToDisableWhenPuppet[i].enabled = false;
-                }
-                for (int i =0; i< gameObjectsToDisableWhenPuppet.Length; i++) 
-                {
-                    gameObjectsToDisableWhenPuppet[i].SetActive(false);
-                }
-
-                Rigidbody r = GetComponent<Rigidbody>();
-                if (r != null)
-                {
-                    r.isKinematic = RigidbodyToKinematicWhenPuppet;
-                }
-            }
+            base.OnIsPuppetChange(isPuppet);
+            naveThrusterFlameController.IsPuppet(isPuppet);
         }
     }
 }
