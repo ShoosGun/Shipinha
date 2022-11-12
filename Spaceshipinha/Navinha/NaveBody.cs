@@ -7,7 +7,7 @@ namespace Spaceshipinha.Navinha
         private bool _isPlayerAtFlightConsole;
         public NaveFlightConsole naveFlightConsole;
 
-        public void Innit() 
+        public void Init() 
         {
             naveFlightConsole.OnEnterNaveFlightConsole += OnEnterFlightConsole;
             naveFlightConsole.OnExitNaveFlightConsole += OnExitFlightConsole;

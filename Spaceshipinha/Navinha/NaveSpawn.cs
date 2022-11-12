@@ -49,8 +49,8 @@ namespace Spaceshipinha.Navinha
                 return naveFlightConsole.enabled;
             };
 
-            naveThrusterController.Innit();
-            naveBodyRigid.Innit();
+            naveThrusterController.Init();
+            naveBodyRigid.Init();
             #endregion
 
             #region Nave_Detectors
@@ -120,6 +120,7 @@ namespace Spaceshipinha.Navinha
             #endregion
 
             #region Nave_Networking_Interface
+
             NavinhaNetworkingInterface networkingInterface = naveBody.AddComponent<NavinhaNetworkingInterface>();
 
             networkingInterface.scriptsToDisableWhenPuppet = new MonoBehaviour[]

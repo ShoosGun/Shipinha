@@ -13,7 +13,7 @@ namespace Spaceshipinha.Navinha
             base.Awake();
             enabled = false;
         }
-        public void Innit() 
+        public void Init() 
         {
             naveFlightConsole.OnEnterNaveFlightConsole += OnEnterNaveFlightConsole;
             naveFlightConsole.OnExitNaveFlightConsole += OnExitNaveFlightConsole;
