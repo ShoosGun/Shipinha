@@ -62,7 +62,6 @@ namespace Spaceshipinha.Navinha
             shape.CopySettingsFromCollider();
             shape.RecalculateLocalBounds();
             shape.SetCollisionMode(Shape.CollisionMode.Detector);
-            ShapeManager.AddShape(shape);
 
             naveDetector.AddComponent<DynamicForceDetector>();
             naveDetector.AddComponent<SectorDetector>();
