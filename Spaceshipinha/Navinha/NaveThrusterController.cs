@@ -10,13 +10,10 @@ namespace Spaceshipinha.Navinha
 
         public override void Awake()
         {
-            base.Awake();
-            enabled = false;
-        }
-        public void Init() 
-        {
             naveFlightConsole.OnEnterNaveFlightConsole += OnEnterNaveFlightConsole;
             naveFlightConsole.OnExitNaveFlightConsole += OnExitNaveFlightConsole;
+            base.Awake();
+            enabled = false;
         }
         public override void OnDestroy()
         {
