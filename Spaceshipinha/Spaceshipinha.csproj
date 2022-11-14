@@ -31,7 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SlateShipyard">
-      <HintPath>..\..\..\..\..\AppData\Roaming\OuterWildsModManager\OWML\Mods\Locochoco.SlateShipyard\SlateShipyard.dll</HintPath>
+      <HintPath>$(AppData)\OuterWildsModManager\OWML\Mods\Locochoco.SlateShipyard\SlateShipyard.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
