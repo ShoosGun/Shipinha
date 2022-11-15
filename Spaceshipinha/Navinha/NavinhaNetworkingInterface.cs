@@ -13,7 +13,7 @@ namespace Spaceshipinha.Navinha
         [SyncableProperty]
         public float translationalInputz
         {
-            get => naveThrusterController.ReadTranslationalInput().z * (naveThrusterController.IsThrusterOn() ? 1f : 0f);
+            get => naveThrusterController.ReadTranslationalInput().z * (naveThrusterController.enabled ? 1f : 0f);
             set => naveThrusterFlameController.externalTranslationInput = value;
         }
         public override void OnIsPuppetChange(bool isPuppet)
