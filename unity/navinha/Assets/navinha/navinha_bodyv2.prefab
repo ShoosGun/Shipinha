@@ -6109,7 +6109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjectsToDisableWhenPuppet:
-  - {fileID: 278987673247539743}
+  - {fileID: 9206420344347508571}
   - {fileID: 9206420344347508547}
   - {fileID: 4420102819153169573}
   - {fileID: 9206420344347508555}

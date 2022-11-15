@@ -13,7 +13,7 @@ namespace Spaceshipinha.Navinha
         [SyncableProperty]
         public float translationalInputz
         {
-            get => naveThrusterController.ReadTranslationalInput().z;
+            get => naveThrusterController.ReadTranslationalInput().z * (naveThrusterController.IsThrusterOn() ? 1f : 0f);
             set => naveThrusterFlameController.externalTranslationInput = value;
         }
         public override void OnIsPuppetChange(bool isPuppet)
@@ -43,24 +43,4 @@ namespace Spaceshipinha.Navinha
         //    }
         //}
     }
-    /*
-    public class NavinhaNetworkingInterface : SimpleNetworkingInterface
-    {
-        public NaveThrusterFlameController naveThrusterFlameController;
-        public NaveThrusterController naveThrusterController;
-
-        [SyncableProperty]
-        public float translationalInputz 
-        { 
-            get => naveThrusterController.ReadTranslationalInput().z; 
-            set => naveThrusterFlameController.externalTranslationInput = value; 
-        }
-
-        public override void OnIsPuppetChange(bool isPuppet)
-        {
-            base.OnIsPuppetChange(isPuppet);
-            naveThrusterFlameController.IsPuppet(isPuppet);
-        }
-    }
-    */
 }
