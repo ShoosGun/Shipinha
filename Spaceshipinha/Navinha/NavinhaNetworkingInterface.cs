@@ -1,5 +1,4 @@
 ﻿using SlateShipyard.NetworkingInterface;
-using UnityEngine;
 
 namespace Spaceshipinha.Navinha
 {
