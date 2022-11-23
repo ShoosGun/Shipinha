@@ -2,7 +2,7 @@
 
 namespace Spaceshipinha.Navinha
 {
-    internal class NaveThrusterFlameController : MonoBehaviour
+	public class NaveThrusterFlameController : MonoBehaviour
     {
 		public NaveFlightConsole naveFlightConsole;
 		public NaveThrusterController naveThrusterController;
@@ -34,9 +34,22 @@ namespace Spaceshipinha.Navinha
 			naveFlightConsole.OnEnterNaveFlightConsole -= OnEnterNaveFlightConsole;
 			naveFlightConsole.OnExitNaveFlightConsole -= OnExitNaveFlightConsole;
 		}
+		private bool isPuppet;
+		public float externalTranslationInput = 0f;
+		public void IsPuppet(bool isPuppet) 
+		{
+			this.isPuppet = isPuppet;
+
+			rpsController.enabled = isPuppet;
+			enabled = isPuppet;
+		}
+		private float GetTranslationInput() 
+		{
+			return isPuppet? externalTranslationInput : naveThrusterController.ReadTranslationalInput().z;
+		}
 		private void Update()
 		{
-			float input = naveThrusterController.ReadTranslationalInput().z;
+			float input = GetTranslationInput();
 			if (input > 0f)
 			{
 				size.sizeMultiplier = input;

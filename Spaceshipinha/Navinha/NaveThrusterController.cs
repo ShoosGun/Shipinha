@@ -2,7 +2,7 @@
 
 namespace Spaceshipinha.Navinha
 {
-    internal class NaveThrusterController : ThrusterController
+    public class NaveThrusterController : ThrusterController
     {
         public static float ControllerDeadZone = 0.1f;
         public int Potencia { get; private set; } = 0; //Em "por mil"
@@ -10,13 +10,10 @@ namespace Spaceshipinha.Navinha
 
         public override void Awake()
         {
-            base.Awake();
-            enabled = false;
-        }
-        public void Innit() 
-        {
             naveFlightConsole.OnEnterNaveFlightConsole += OnEnterNaveFlightConsole;
             naveFlightConsole.OnExitNaveFlightConsole += OnExitNaveFlightConsole;
+            base.Awake();
+            enabled = false;
         }
         public override void OnDestroy()
         {

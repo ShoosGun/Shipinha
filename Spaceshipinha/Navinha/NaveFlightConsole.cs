@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Spaceshipinha.Navinha
 {
-    internal class NaveFlightConsole : MonoBehaviour
+    public class NaveFlightConsole : MonoBehaviour
     {
         public OWRigidbody naveBody;
 

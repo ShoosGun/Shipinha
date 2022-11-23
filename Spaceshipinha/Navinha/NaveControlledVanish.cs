@@ -3,7 +3,7 @@ using SlateShipyard.VanishObjects;
 
 namespace Spaceshipinha.Navinha
 {
-    internal class NaveControlledVanish : ControlledVanishObject
+    public class NaveControlledVanish : ControlledVanishObject
     {
         private OWRigidbody naveBody;
         private NaveFlightConsole naveConsole;

@@ -2,15 +2,16 @@
 
 namespace Spaceshipinha.Navinha
 {
-    internal class NaveBody : OWRigidbody
+    public class NaveBody : OWRigidbody
     {
         private bool _isPlayerAtFlightConsole;
         public NaveFlightConsole naveFlightConsole;
 
-        public void Innit() 
+        public override void Awake() 
         {
             naveFlightConsole.OnEnterNaveFlightConsole += OnEnterFlightConsole;
             naveFlightConsole.OnExitNaveFlightConsole += OnExitFlightConsole;
+            base.Awake();
         }
 
         public override void OnDestroy()
