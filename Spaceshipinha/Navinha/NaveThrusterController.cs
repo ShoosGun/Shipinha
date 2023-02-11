@@ -47,6 +47,9 @@ namespace Spaceshipinha.Navinha
         }
         public bool IsThrusterOn()
         {
+            if(OWInput.GetInputMode() != InputMode.ShipCockpit)
+                return false;
+
             float input;
             if (Spaceshipinha.ControllerInputs){
                 input = OWInput.GetValue(InputLibrary.thrustUp, InputMode.All);
@@ -58,6 +61,9 @@ namespace Spaceshipinha.Navinha
         }
         public override Vector3 ReadTranslationalInput()
         {
+            if (OWInput.GetInputMode() != InputMode.ShipCockpit)
+                return Vector3.zero;
+
             if (IsThrusterOn())
                 return new Vector3(0f, 0f, Potencia / 1000f);
 
@@ -66,6 +72,9 @@ namespace Spaceshipinha.Navinha
 
         public override Vector3 ReadRotationalInput()
         {
+            if (OWInput.GetInputMode() != InputMode.ShipCockpit)
+                return Vector3.zero;
+
             if (OWInput.IsPressed(InputLibrary.freeLook, InputMode.All))
                 return Vector3.zero;
 

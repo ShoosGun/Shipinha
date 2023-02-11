@@ -100,7 +100,7 @@ namespace Spaceshipinha.Navinha
 
         private void Update()
         {
-            if (OWInput.IsNewlyPressed(InputLibrary.cancel, InputMode.All))
+            if (OWInput.IsNewlyPressed(InputLibrary.cancel, InputMode.ShipCockpit))
             {
                 attachPoint.DetachPlayer();
                 playerAudio.PlayOneShotInternal(AudioType.ShipCockpitUnbuckle);
